@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiếng Anh Lớp 5 - Hành Trình Học Tập</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF7B9C;
+            --primary-hover: #FF527B;
+            --secondary: #4ECDC4;
+            --accent: #FFD166;
+            --bg-color: #F7F9FC;
+            --text-color: #2B2D42;
+            --card-bg: #FFFFFF;
+            --success: #06D6A0;
+            --warning: #EF476F;
+            --border-radius: 20px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding-bottom: 50px;
+            background-image: radial-gradient(#4ECDC4 0.75px, transparent 0.75px), radial-gradient(#FF7B9C 0.75px, var(--bg-color) 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #FF7B9C, #FFD166);
+            color: white;
+            text-align: center;
+            padding: 25px 15px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 8px 20px rgba(255, 123, 156, 0.3);
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+            margin-bottom: 5px;
+        }
+
+        .user-welcome {
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.25);
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 20px;
+            margin-top: 5px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 0 auto 25px auto;
+            padding: 0 15px;
+        }
+
+        .nav-btn {
+            background: white;
+            border: 3px solid var(--secondary);
+            color: var(--text-color);
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            background: var(--secondary);
+            color: white;
+        }
+
+        .nav-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-color: #ccc;
+            background: #e0e0e0;
+        }
+
+        /* Container Main */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 2px solid #EFF2F7;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 3px dashed var(--accent);
+            padding-bottom: 10px;
+        }
+
+        /* Vocabulary Table */
+        .vocab-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+
+        .vocab-table th {
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 1rem;
+        }
+
+        .vocab-table th:first-child { border-radius: 12px 0 0 12px; }
+        .vocab-table th:last-child { border-radius: 0 12px 12px 0; }
+
+        .vocab-table td {
+            background: #F8FAFC;
+            padding: 12px;
+            font-size: 1rem;
+            border-top: 1px solid #E2E8F0;
+            border-bottom: 1px solid #E2E8F0;
+        }
+
+        .vocab-table tr td:first-child { border-left: 1px solid #E2E8F0; border-radius: 12px 0 0 12px; font-weight: 700; color: var(--primary); }
+        .vocab-table tr td:last-child { border-right: 1px solid #E2E8F0; border-radius: 0 12px 12px 0; }
+
+        .audio-btn {
+            background: var(--accent);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            color: var(--text-color);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .audio-btn:hover {
+            transform: scale(1.15);
+            background: #FFC02D;
+        }
+
+        /* Grammar Box */
+        .grammar-item {
+            background: #FFF9EC;
+            border-left: 5px solid var(--accent);
+            padding: 18px;
+            border-radius: 0 15px 15px 0;
+            margin-bottom: 20px;
+        }
+
+        .grammar-title {
+            font-weight: 700;
+            color: #D97706;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+
+        .example-box {
+            background: white;
+            padding: 12px 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border: 1px solid #FCD34D;
+        }
+
+        .example-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #F3F4F6;
+        }
+
+        .example-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+        /* Quiz Section */
+        .quiz-question {
+            background: #F8FAFC;
+            padding: 18px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #E2E8F0;
+        }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            color: #1E293B;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .options-grid { grid-template-columns: 1fr; }
+        }
+
+        .option-btn {
+            background: white;
+            border: 2px solid #CBD5E1;
+            padding: 10px 15px;
+            border-radius: 12px;
+            text-align: left;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover {
+            border-color: var(--secondary);
+            background: #F0FDFA;
+        }
+
+        .option-btn.selected {
+            border-color: var(--primary);
+            background: #FFF1F2;
+        }
+
+        .btn-submit {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto 0 auto;
+            box-shadow: 0 5px 15px rgba(255, 123, 156, 0.4);
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-next-unit {
+            background: var(--success);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            border-radius: 50px;
+            cursor: pointer;
+            display: none;
+            margin: 20px auto 0 auto;
+            box-shadow: 0 5px 15px rgba(6, 214, 160, 0.4);
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-5px); }
+        }
+
+        .quiz-result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 700;
+            display: none;
+        }
+
+        /* Flashcard Section */
+        .flashcard-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 400px;
+            height: 250px;
+            margin: 20px auto;
+        }
+
+        .flashcard {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 4px solid var(--accent);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .card-front {
+            background: white;
+            color: var(--primary);
+        }
+
+        .card-back {
+            background: var(--secondary);
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .fc-btn {
+            background: white;
+            border: 2px solid var(--secondary);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* Certificate / Completion Page */
+        .certificate-card {
+            text-align: center;
+            background: white;
+            padding: 40px 20px;
+            border-radius: 30px;
+            border: 8px solid var(--accent);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .trophy-icon {
+            font-size: 5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: #E2E8F0;
+            border-radius: 20px;
+            margin: 20px 0;
+            overflow: hidden;
+            height: 25px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--success));
+            width: 0%;
+            transition: width 1s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 800;
+        }
+
+        /* Name Modal */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 2px solid var(--secondary);
+            border-radius: 10px;
+            font-size: 1rem;
+            text-align: center;
+            outline: none;
+        }
+
+        .modal-content button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Modal Nhập Tên -->
+    <div id="nameModal" class="modal">
+        <div class="modal-content">
+            <h2><i class="fas fa-child" style="color: var(--primary);"></i> Chào Bạn Nhỏ!</h2>
+            <p style="margin-top: 10px; color: #666;">Hãy nhập tên của em để bắt đầu hành trình học tập nhé:</p>
+            <input type="text" id="studentNameInput" placeholder="Nhập tên của em..." value="Học sinh thông minh">
+            <button onclick="saveStudentName()">Bắt Đầu Học Bắt Đầu!</button>
+        </div>
+    </div>
+
+    <header>
+        <h1><i class="fas fa-graduation-cap"></i> Tiếng Anh Lớp 5</h1>
+        <div class="user-welcome"><i class="fas fa-user-circle"></i> Xin chào: <span id="displayName">...</span></div>
+    </header>
+
+    <div class="nav-container">
+        <button class="nav-btn active" id="btn-u1" onclick="switchTab('u1')"><i class="fas fa-star"></i> Unit 1</button>
+        <button class="nav-btn" id="btn-u2" onclick="switchTab('u2')" disabled><i class="fas fa-lock"></i> Unit 2</button>
+        <button class="nav-btn" id="btn-u3" onclick="switchTab('u3')" disabled><i class="fas fa-lock"></i> Unit 3</button>
+        <button class="nav-btn" id="btn-u4" onclick="switchTab('u4')" disabled><i class="fas fa-lock"></i> Unit 4</button>
+        <button class="nav-btn" id="btn-u5" onclick="switchTab('u5')" disabled><i class="fas fa-lock"></i> Unit 5</button>
+        <button class="nav-btn" id="btn-fc" onclick="switchTab('fc')"><i class="fas fa-layer-group"></i> Flashcard</button>
+        <button class="nav-btn" id="btn-cert" onclick="switchTab('cert')" disabled><i class="fas fa-trophy"></i> Thành Tích</button>
+    </div>
+
+    <div class="container">
+        <!-- UNIT 1 -->
+        <div id="u1" class="tab-content active">
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-book"></i> Từ Vựng - Unit 1: All About Me!</h2>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th>Từ tiếng Anh</th><th>Phiên âm</th><th>Nghĩa tiếng Việt</th><th>Phát âm</th></tr>
+                    </thead>
+                    <tbody id="vocab-u1"></tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Ngữ Pháp Rõ Ràng & Dễ Hiểu</h2>
+                
+                <div class="grammar-item">
+                    <div class="grammar-title">1. Giới thiệu thông tin cá nhân</div>
+                    <p>Khi muốn hỏi ai đó giới thiệu về bản thân, ta dùng câu hỏi:</p>
+                    <p style="font-weight:700; color:var(--primary); margin: 5px 0;">👉 Can you tell me about yourself?</p>
+                    <p>Để trả lời, em có thể nói về tên, lớp, nơi sống hoặc tháng sinh:</p>
+                    <div class="example-box">
+                        <div class="example-item">
+                            <span><b>My name is + [Tên]</b> (Mình tên là...)</span>
+                            <button class="audio-btn" onclick="speak('My name is Lina.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span><b>I’m in Class + [Lớp]</b> (Mình học lớp...)</span>
+                            <button class="audio-btn" onclick="speak('I’m in Class 5A.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span><b>I live in the city / country.</b> (Mình sống ở thành phố / nông thôn)</span>
+                            <button class="audio-btn" onclick="speak('I live in the city.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span><b>My birthday is in + [Tháng]</b> (Sinh nhật mình vào tháng...)</span>
+                            <button class="audio-btn" onclick="speak('My birthday is in April.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grammar-item">
+                    <div class="grammar-title">2. Hỏi về sở thích của BẠN (màu sắc, thể thao, con vật, thức ăn)</div>
+                    <p>Cấu trúc: <b>What’s your favourite + [từ loại]?</b> ➔ Trả lời: <b>It’s + [món/màu/vật...]</b></p>
+                    <div class="example-box">
+                        <div class="example-item">
+                            <span>- What’s your favourite colour? ➔ It’s blue.</span>
+                            <button class="audio-btn" onclick="speak('What’s your favourite colour? It’s blue.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- What’s your favourite sport? ➔ It’s swimming.</span>
+                            <button class="audio-btn" onclick="speak('What’s your favourite sport? It’s swimming.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- What’s your favourite animal? ➔ It’s a dolphin.</span>
+                            <button class="audio-btn" onclick="speak('What’s your favourite animal? It’s a dolphin.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- What’s your favourite food? ➔ It’s a sandwich.</span>
+                            <button class="audio-btn" onclick="speak('What’s your favourite food? It’s a sandwich.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grammar-item">
+                    <div class="grammar-title">3. Hỏi về sở thích của AI ĐÓ (Cô ấy / Cậu ấy / Tên riêng)</div>
+                    <p>Thay <b>your</b> bằng <b>her</b> (cô ấy), <b>his</b> (anh ấy), hoặc <b>[Tên]'s</b>:</p>
+                    <div class="example-box">
+                        <div class="example-item">
+                            <span>- What’s her favourite colour? ➔ It’s white.</span>
+                            <button class="audio-btn" onclick="speak('What’s her favourite colour? It’s white.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- What’s his favourite sport? ➔ It’s table tennis.</span>
+                            <button class="audio-btn" onclick="speak('What’s his favourite sport? It’s table tennis.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- What’s Nam’s favourite animal? ➔ It’s a panda.</span>
+                            <button class="audio-btn" onclick="speak('What’s Nam’s favourite animal? It’s a panda.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-pen-pencil"></i> Bài Tập Luyện Tập Unit 1 (10 câu)</h2>
+                <div id="quiz-u1"></div>
+                <button class="btn-submit" onclick="checkQuiz('u1')">Nộp Bài Kiểm Tra</button>
+                <div id="result-u1" class="quiz-result"></div>
+                <button id="next-u1" class="btn-next-unit" onclick="unlockNextUnit('u2')">Chuyển Sang Unit 2 <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- UNIT 2 -->
+        <div id="u2" class="tab-content">
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-book"></i> Từ Vựng - Unit 2: My Address & Home</h2>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th>Từ tiếng Anh</th><th>Phiên âm</th><th>Nghĩa tiếng Việt</th><th>Phát âm</th></tr>
+                    </thead>
+                    <tbody id="vocab-u2"></tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Ngữ Pháp Rõ Ràng & Dễ Hiểu</h2>
+                
+                <div class="grammar-item">
+                    <div class="grammar-title">1. Hỏi xác nhận: Bạn có sống ở đây/kia không?</div>
+                    <p>Cấu trúc: <b>Do you live in this/that + [loại nhà]?</b></p>
+                    <p>Trả lời: <b>Yes, I do.</b> (Có) hoặc <b>No, I don’t.</b> (Không)</p>
+                    <div class="example-box">
+                        <div class="example-item">
+                            <span>- Do you live in this house? ➔ Yes, I do.</span>
+                            <button class="audio-btn" onclick="speak('Do you live in this house? Yes, I do.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- Do you live in that building? ➔ Yes, I do.</span>
+                            <button class="audio-btn" onclick="speak('Do you live in that building? Yes, I do.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- Do you live in this flat? ➔ No, I don’t.</span>
+                            <button class="audio-btn" onclick="speak('Do you live in this flat? No, I don’t.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grammar-item">
+                    <div class="grammar-title">2. Hỏi và trả lời địa chỉ của BẠN</div>
+                    <p>Cách 1: <b>What’s your address?</b> ➔ <b>It’s + [Số nhà + Tên đường]</b></p>
+                    <p>Cách 2: <b>Where do you live?</b> ➔ <b>I live at + [Số nhà + Tên đường]</b> (Lưu ý: Có số nhà dùng giới từ <b>at</b>)</p>
+                    <div class="example-box">
+                        <div class="example-item">
+                            <span>- What’s your address? ➔ It’s 50 Hoa Binh Street.</span>
+                            <button class="audio-btn" onclick="speak('What’s your address? It’s 50 Hoa Binh Street.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- Where do you live? ➔ I live at 20 Le Loi Street.</span>
+                            <button class="audio-btn" onclick="speak('Where do you live? I live at 20 Le Loi Street.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grammar-item">
+                    <div class="grammar-title">3. Hỏi địa chỉ của AI ĐÓ (Anh ấy / Cô ấy / Tên riêng)</div>
+                    <p>• <b>What’s his/her address?</b> ➔ <b>It’s + [Địa chỉ]</b></p>
+                    <p>• <b>Where does he/she/Nick live?</b> ➔ <b>He/She lives at + [Địa chỉ]</b> (Lưu ý: live thêm 's' ➔ lives)</p>
+                    <div class="example-box">
+                        <div class="example-item">
+                            <span>- What’s his address? ➔ It’s 14 Quang Trung Street.</span>
+                            <button class="audio-btn" onclick="speak('What’s his address? It’s 14 Quang Trung Street.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- Where does Nick live? ➔ He lives at 50 King Street.</span>
+                            <button class="audio-btn" onclick="speak('Where does Nick live? He lives at 50 King Street.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-pen-pencil"></i> Bài Tập Luyện Tập Unit 2 (10 câu)</h2>
+                <div id="quiz-u2"></div>
+                <button class="btn-submit" onclick="checkQuiz('u2')">Nộp Bài Kiểm Tra</button>
+                <div id="result-u2" class="quiz-result"></div>
+                <button id="next-u2" class="btn-next-unit" onclick="unlockNextUnit('u3')">Chuyển Sang Unit 3 <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- UNIT 3 -->
+        <div id="u3" class="tab-content">
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-book"></i> Từ Vựng - Unit 3: Foreign Friends & Personalities</h2>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th>Từ tiếng Anh</th><th>Phiên âm</th><th>Nghĩa tiếng Việt</th><th>Phát âm</th></tr>
+                    </thead>
+                    <tbody id="vocab-u3"></tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Ngữ Pháp Rõ Ràng & Dễ Hiểu</h2>
+                
+                <div class="grammar-item">
+                    <div class="grammar-title">1. Hỏi ai đó đến từ quốc gia nào</div>
+                    <p>• Bạn: <b>Where are you from?</b> ➔ <b>I’m from + [Tên nước]</b></p>
+                    <p>• Anh ấy/Cô ấy: <b>Where is he/she/Amy from?</b> ➔ <b>He’s/She’s from + [Tên nước]</b></p>
+                    <div class="example-box">
+                        <div class="example-item">
+                            <span>- Where are you from? ➔ I’m from Vietnam.</span>
+                            <button class="audio-btn" onclick="speak('Where are you from? I’m from Vietnam.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- Where is Amy from? ➔ She’s from Japan.</span>
+                            <button class="audio-btn" onclick="speak('Where is Amy from? She’s from Japan.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grammar-item">
+                    <div class="grammar-title">2. Hỏi về quốc tịch (Người nước nào)</div>
+                    <p>• Bạn: <b>What nationality are you?</b> ➔ <b>I’m + [Tên quốc tịch]</b></p>
+                    <p>• Anh ấy/Cô ấy: <b>What nationality is he/she/Mary?</b> ➔ <b>He/She is + [Tên quốc tịch]</b></p>
+                    <div class="example-box">
+                        <div class="example-item">
+                            <span>- What nationality are you? ➔ I’m Vietnamese.</span>
+                            <button class="audio-btn" onclick="speak('What nationality are you? I’m Vietnamese.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- What nationality is Mary? ➔ She is British.</span>
+                            <button class="audio-btn" onclick="speak('What nationality is Mary? She is British.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grammar-item">
+                    <div class="grammar-title">3. Hỏi về tính cách của ai đó</div>
+                    <p>• Cấu trúc chung: <b>What’s he/she/Linda like?</b> ➔ <b>He’s / She’s + [Tính từ tính cách]</b></p>
+                    <p>• Hỏi xác nhận: <b>Is he/she + [Tính từ]?</b> ➔ <b>Yes, he/she is.</b> / <b>No, he/she isn’t.</b></p>
+                    <div class="example-box">
+                        <div class="example-item">
+                            <span>- What’s he like? ➔ He’s friendly.</span>
+                            <button class="audio-btn" onclick="speak('What’s he like? He’s friendly.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- Is she clever? ➔ Yes, she is.</span>
+                            <button class="audio-btn" onclick="speak('Is she clever? Yes, she is.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-pen-pencil"></i> Bài Tập Luyện Tập Unit 3 (10 câu)</h2>
+                <div id="quiz-u3"></div>
+                <button class="btn-submit" onclick="checkQuiz('u3')">Nộp Bài Kiểm Tra</button>
+                <div id="result-u3" class="quiz-result"></div>
+                <button id="next-u3" class="btn-next-unit" onclick="unlockNextUnit('u4')">Chuyển Sang Unit 4 <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- UNIT 4 -->
+        <div id="u4" class="tab-content">
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-book"></i> Từ Vựng - Unit 4: Free Time Activities</h2>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th>Từ tiếng Anh</th><th>Phiên âm</th><th>Nghĩa tiếng Việt</th><th>Phát âm</th></tr>
+                    </thead>
+                    <tbody id="vocab-u4"></tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Ngữ Pháp Rõ Ràng & Dễ Hiểu</h2>
+                
+                <div class="grammar-item">
+                    <div class="grammar-title">1. Hỏi thích làm gì vào thời gian rảnh rỗi</div>
+                    <p>• Với You: <b>What do you like in your free time?</b> ➔ <b>I like + V-ing...</b></p>
+                    <p>• Với He/She: <b>What does he/she like in his/her free time?</b> ➔ <b>He/She likes + V-ing...</b></p>
+                    <div class="example-box">
+                        <div class="example-item">
+                            <span>- What do you like in your free time? ➔ I like surfing the Internet.</span>
+                            <button class="audio-btn" onclick="speak('What do you like in your free time? I like surfing the Internet.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- What does she like in her free time? ➔ She likes playing the piano.</span>
+                            <button class="audio-btn" onclick="speak('What does she like in her free time? She likes playing the piano.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grammar-item">
+                    <div class="grammar-title">2. Hỏi ai đó làm gì vào cuối tuần (Dùng Trạng từ chỉ tần suất)</div>
+                    <p>• <b>What do you do at the weekend?</b> ➔ <b>I + [trạng từ: always/often/sometimes...] + V</b></p>
+                    <p>• <b>What does he/she do at the weekend?</b> ➔ <b>He/She + [trạng từ] + V(s/es)</b></p>
+                    <div class="example-box">
+                        <div class="example-item">
+                            <span>- What do you do at the weekend? ➔ I always read stories.</span>
+                            <button class="audio-btn" onclick="speak('What do you do at the weekend? I always read stories.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- What does he do at the weekend? ➔ He usually plays football.</span>
+                            <button class="audio-btn" onclick="speak('What does he do at the weekend? He usually plays football.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-pen-pencil"></i> Bài Tập Luyện Tập Unit 4 (10 câu)</h2>
+                <div id="quiz-u4"></div>
+                <button class="btn-submit" onclick="checkQuiz('u4')">Nộp Bài Kiểm Tra</button>
+                <div id="result-u4" class="quiz-result"></div>
+                <button id="next-u4" class="btn-next-unit" onclick="unlockNextUnit('u5')">Chuyển Sang Unit 5 <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <!-- UNIT 5 -->
+        <div id="u5" class="tab-content">
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-book"></i> Từ Vựng - Unit 5: Future Jobs</h2>
+                <table class="vocab-table">
+                    <thead>
+                        <tr><th>Từ tiếng Anh</th><th>Phiên âm</th><th>Nghĩa tiếng Việt</th><th>Phát âm</th></tr>
+                    </thead>
+                    <tbody id="vocab-u5"></tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-lightbulb"></i> Ngữ Pháp Rõ Ràng & Dễ Hiểu</h2>
+                
+                <div class="grammar-item">
+                    <div class="grammar-title">1. Hỏi ai đó muốn làm nghề gì trong tương lai</div>
+                    <p>• <b>What would you like to be in the future?</b> ➔ <b>I’d like to be a/an + [nghề nghiệp]</b></p>
+                    <p>• <b>What would he/she like to be in the future?</b> ➔ <b>He’d/She’d like to be a/an + [nghề nghiệp]</b></p>
+                    <div class="example-box">
+                        <div class="example-item">
+                            <span>- What would you like to be in the future? ➔ I’d like to be a reporter.</span>
+                            <button class="audio-btn" onclick="speak('What would you like to be in the future? I’d like to be a reporter.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- What would she like to be in the future? ➔ She’d like to be a doctor.</span>
+                            <button class="audio-btn" onclick="speak('What would she like to be in the future? She’d like to be a doctor.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grammar-item">
+                    <div class="grammar-title">2. Hỏi lý do tại sao muốn làm nghề đó</div>
+                    <p>Cấu trúc: <b>Why would you/he/she like to be a + [nghề]?</b></p>
+                    <p>Trả lời: <b>Because I’d / he’d / she’d like to + [hành động]</b></p>
+                    <div class="example-box">
+                        <div class="example-item">
+                            <span>- Why would you like to be a doctor? ➔ Because I’d like to help people.</span>
+                            <button class="audio-btn" onclick="speak('Why would you like to be a doctor? Because I’d like to help people.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="example-item">
+                            <span>- Why would he like to be a teacher? ➔ Because he’d like to teach children.</span>
+                            <button class="audio-btn" onclick="speak('Why would he like to be a teacher? Because he’d like to teach children.')"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="section-title"><i class="fas fa-pen-pencil"></i> Bài Tập Luyện Tập Unit 5 (10 câu)</h2>
+                <div id="quiz-u5"></div>
+                <button class="btn-submit" onclick="checkQuiz('u5')">Nộp Bài Kiểm Tra</button>
+                <div id="result-u5" class="quiz-result"></div>
+                <button id="next-u5" class="btn-next-unit" onclick="unlockNextUnit('cert')">Xem Kết Quả & Hoàn Thành <i class="fas fa-trophy"></i></button>
+            </div>
+        </div>
+
+        <!-- FLASHCARD -->
+        <div id="fc" class="tab-content">
+            <div class="card" style="text-align: center;">
+                <h2 class="section-title" style="justify-content: center;"><i class="fas fa-clone"></i> Ôn Tập Từ Vựng Bằng Flashcard (5 Unit)</h2>
+                <p style="color: #666; margin-bottom: 15px;">Chạm vào thẻ để lật xem nghĩa tiếng Việt!</p>
+                
+                <div class="flashcard-container">
+                    <div class="flashcard" id="main-flashcard" onclick="flipCard()">
+                        <div class="card-front">
+                            <h2 id="fc-english" style="font-size: 2rem; margin-bottom: 10px;">yourself</h2>
+                            <p id="fc-pronun" style="color: #888; font-style: italic;">/jɔːˈself/</p>
+                            <button class="audio-btn" style="margin-top: 15px;" onclick="event.stopPropagation(); speakCurrentFc();"><i class="fas fa-volume-up"></i></button>
+                        </div>
+                        <div class="card-back">
+                            <h2 id="fc-vietnamese" style="font-size: 1.8rem;">bản thân bạn</h2>
+                            <p id="fc-unit" style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">Unit 1</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard-controls">
+                    <button class="fc-btn" onclick="prevFc()"><i class="fas fa-arrow-left"></i> Từ trước</button>
+                    <button class="fc-btn" onclick="randomFc()"><i class="fas fa-random"></i> Ngẫu nhiên</button>
+                    <button class="fc-btn" onclick="nextFc()">Từ tiếp <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- THÀNH TÍCH / TRANG CUỐI -->
+        <div id="cert" class="tab-content">
+            <div class="certificate-card">
+                <i class="fas fa-trophy trophy-icon"></i>
+                <h1 style="color: var(--primary); font-size: 2.2rem; margin-bottom: 10px;">XUẤT SẮC HOÀN THÀNH!</h1>
+                <p style="font-size: 1.2rem; margin-bottom: 15px;">Chúc mừng học sinh: <b id="certName" style="color: var(--secondary);">...</b></p>
+                <p>Em đã hoàn thành xuất sắc chương trình ôn tập Tiếng Anh Lớp 5 (Unit 1 - Unit 5)!</p>
+                
+                <div style="max-width: 400px; margin: 25px auto;">
+                    <div style="display: flex; justify-content: space-between; font-weight:700;">
+                        <span>Tiến độ hoàn thành:</span>
+                        <span id="certPercent">100%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="certBar">100%</div>
+                    </div>
+                </div>
+
+                <div style="background: #F0FDFA; border: 2px dashed var(--secondary); padding: 15px; border-radius: 15px; margin-top: 20px;">
+                    <p style="color: #0D9488; font-weight: 700;">🌟 Lời khen từ thầy cô:</p>
+                    <p style="color: #134E4A; margin-top: 5px;">"Em đã rất chăm chỉ và có tư duy học tập rất tuyệt vời. Hãy tiếp tục phát huy năng lực tiếng Anh của mình nhé!"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- DỮ LIỆU TỪ VỰNG TỔNG HỢP 5 UNIT ---
+        const vocabData = {
+            u1: [
+                { en: "yourself", pronun: "/jɔːˈself/", vi: "bản thân bạn" },
+                { en: "baseball", pronun: "/ˈbeɪsbɔːl/", vi: "bóng chày" },
+                { en: "basketball", pronun: "/ˈbɑːskɪtbɔːl/", vi: "bóng rổ" },
+                { en: "beautifully", pronun: "/ˈbjuːtɪfli/", vi: "đẹp, hay" },
+                { en: "city", pronun: "/ˈsɪti/", vi: "thành phố" },
+                { en: "class", pronun: "/klɑːs/", vi: "lớp học" },
+                { en: "colour", pronun: "/ˈkʌlə(r)/", vi: "màu sắc" },
+                { en: "countryside", pronun: "/ˈkʌntrisaɪd/", vi: "nông thôn" },
+                { en: "dolphin", pronun: "/ˈdɒlfɪn/", vi: "cá heo" },
+                { en: "favourite", pronun: "/ˈfeɪvərɪt/", vi: "yêu thích" },
+                { en: "introduce", pronun: "/ˌɪntrəˈdjuːs/", vi: "giới thiệu" },
+                { en: "jump", pronun: "/dʒʌmp/", vi: "nhảy" },
+                { en: "panda", pronun: "/ˈpændə/", vi: "gấu trúc" },
+                { en: "sandwich", pronun: "/ˈsænwɪtʃ/", vi: "bánh mì kẹp" },
+                { en: "sports center", pronun: "/ˈspɔːts sentə(r)/", vi: "trung tâm thể thao" },
+                { en: "subject", pronun: "/ˈsʌbdʒɪkt/", vi: "môn học" },
+                { en: "swimming", pronun: "/ˈswɪmɪŋ/", vi: "bơi lội" },
+                { en: "table tennis", pronun: "/ˈteɪbl tenɪs/", vi: "môn bóng bàn" },
+                { en: "yesterday", pronun: "/ˈjestədeɪ/", vi: "ngày hôm qua" }
+            ],
+            u2: [
+                { en: "address", pronun: "/əˈdres/", vi: "địa chỉ" },
+                { en: "grade", pronun: "/ɡreɪd/", vi: "khối lớp" },
+                { en: "building", pronun: "/ˈbɪldɪŋ/", vi: "tòa nhà" },
+                { en: "district", pronun: "/ˈdɪstrɪkt/", vi: "quận" },
+                { en: "email", pronun: "/ˈiːmeɪl/", vi: "thư điện tử" },
+                { en: "far from", pronun: "/fɑː frəm/", vi: "xa từ" },
+                { en: "flat", pronun: "/flæt/", vi: "căn hộ" },
+                { en: "house", pronun: "/haʊs/", vi: "căn nhà" },
+                { en: "kilometre", pronun: "/kɪˈlɒmɪtə(r)/", vi: "ki-lô-mét" },
+                { en: "near", pronun: "/nɪə(r)/", vi: "gần" },
+                { en: "over there", pronun: "/ˌəʊvə ˈðeə/", vi: "phía bên kia" },
+                { en: "tower", pronun: "/ˈtaʊə(r)/", vi: "tòa tháp" }
+            ],
+            u3: [
+                { en: "foreign", pronun: "/ˈfɒrən/", vi: "nước ngoài, ngoại quốc" },
+                { en: "nationality", pronun: "/ˌnæʃəˈnæləti/", vi: "quốc tịch" },
+                { en: "country", pronun: "/ˈkʌntri/", vi: "quốc gia, đất nước" },
+                { en: "Australia", pronun: "/ɑːˈstreɪliə/", vi: "nước Úc" },
+                { en: "Australian", pronun: "/ɑːˈstreɪliən/", vi: "người Úc" },
+                { en: "Malaysia", pronun: "/məˈleɪzɪə/", vi: "nước Ma-lai-xi-a" },
+                { en: "Malaysian", pronun: "/məˈleɪzɪən/", vi: "người Ma-lai-xi-a" },
+                { en: "America", pronun: "/əˈmerɪkə/", vi: "nước Mỹ" },
+                { en: "American", pronun: "/əˈmerɪkən/", vi: "người Mỹ" },
+                { en: "Japan", pronun: "/dʒəˈpæn/", vi: "nước Nhật" },
+                { en: "Japanese", pronun: "/ˌdʒæpəˈniːz/", vi: "người Nhật" },
+                { en: "Britain", pronun: "/ˈbrɪtn/", vi: "nước Anh" },
+                { en: "British", pronun: "/ˈbrɪtɪʃ/", vi: "người Anh" },
+                { en: "China", pronun: "/ˈtʃaɪnə/", vi: "nước Trung Quốc" },
+                { en: "Chinese", pronun: "/ˌtʃaɪˈniːz/", vi: "người Trung Quốc" },
+                { en: "India", pronun: "/ˈɪndiə/", vi: "nước Ấn Độ" },
+                { en: "Indian", pronun: "/ˈɪndiən/", vi: "người Ấn Độ" },
+                { en: "Vietnam", pronun: "/ˌvjeθˈnæm/", vi: "nước Việt Nam" },
+                { en: "Vietnamese", pronun: "/ˌviːetnəˈmiːz/", vi: "người Việt Nam" },
+                { en: "like", pronun: "/laɪk/", vi: "như, giống như" },
+                { en: "friendly", pronun: "/ˈfrendli/", vi: "thân thiện" },
+                { en: "helpful", pronun: "/ˈhelpfl/", vi: "hay giúp đỡ, tốt bụng" },
+                { en: "active", pronun: "/ˈæktɪv/", vi: "nhanh nhẹn, năng động" },
+                { en: "clever", pronun: "/ˈklevə(r)/", vi: "thông minh, lanh lợi" },
+                { en: "help others", pronun: "/help ˈʌðərz/", vi: "giúp đỡ những người khác" },
+                { en: "wash the dishes", pronun: "/wɒʃ ðə dɪʃiz/", vi: "rửa chén bát" },
+                { en: "making new friends", pronun: "/meɪk njuː frendz/", vi: "làm quen với bạn mới" },
+                { en: "invite others", pronun: "/ɪnˈvaɪt ˈʌðərz/", vi: "mời những người bạn khác" },
+                { en: "appearance", pronun: "/əˈpɪərəns/", vi: "ngoại hình" },
+                { en: "personality", pronun: "/ˌpɜːsəˈnæləti/", vi: "tính cách" },
+                { en: "fun", pronun: "/fʌn/", vi: "sự vui thích" }
+            ],
+            u4: [
+                { en: "go for a walk", pronun: "/ɡəʊ fə(r) ə wɔːk/", vi: "đi dạo bộ" },
+                { en: "play the violin", pronun: "/pleɪ ðə ˌvaɪəˈlɪn/", vi: "chơi đàn vĩ cầm" },
+                { en: "play the guitar", pronun: "/pleɪ ðə ɡɪˈtɑː(r)/", vi: "chơi đàn ghi-ta" },
+                { en: "surf the internet", pronun: "/sɜːf ðiː ˈɪntənet/", vi: "lướt mạng In-tơ-nét" },
+                { en: "water the flowers", pronun: "/ˈwɔːtər ðə flaʊərz/", vi: "tưới hoa" },
+                { en: "read stories", pronun: "/riːd stɔːriz/", vi: "đọc truyện" },
+                { en: "play football", pronun: "/pleɪ ˈfʊt.bɔːl/", vi: "chơi đá bóng" },
+                { en: "listen to music", pronun: "/ˈlɪsn tə ˈmjuːzɪk/", vi: "nghe nhạc" },
+                { en: "watch TV", pronun: "/wɒtʃ ˌtiːˈviː/", vi: "xem ti vi" },
+                { en: "always", pronun: "/ˈɔːlweɪz/", vi: "luôn luôn" },
+                { en: "usually", pronun: "/ˈjuːʒuəli/", vi: "thường thường" },
+                { en: "often", pronun: "/ˈɒfn/", vi: "hay, thường" },
+                { en: "sometimes", pronun: "/ˈsʌmtaɪmz/", vi: "thỉnh thoảng" },
+                { en: "rarely", pronun: "/ˈreəli/", vi: "hiếm khi" },
+                { en: "never", pronun: "/ˈnevə(r)/", vi: "không bao giờ" },
+                { en: "at the weekend", pronun: "/ˌwiːkˈend/", vi: "vào cuối tuần" }
+            ],
+            u5: [
+                { en: "job", pronun: "/dʒɒb/", vi: "công việc" },
+                { en: "future", pronun: "/ˈfjuːtʃə(r)/", vi: "tương lai" },
+                { en: "doctor", pronun: "/ˈdɒktə/", vi: "bác sĩ" },
+                { en: "teacher", pronun: "/ˈtiːtʃə/", vi: "giáo viên" },
+                { en: "firefighter", pronun: "/ˈfaɪəfaɪtə(r)/", vi: "lính cứu hỏa" },
+                { en: "reporter", pronun: "/rɪˈpɔːtə(r)/", vi: "phóng viên" },
+                { en: "gardener", pronun: "/ˈɡɑːdnə(r)/", vi: "người làm vườn" },
+                { en: "writer", pronun: "/ˈraɪtə(r)/", vi: "nhà văn" },
+                { en: "plant", pronun: "/plɑːnt/", vi: "cây, trồng cây" },
+                { en: "flower", pronun: "/ˈflaʊə(r)/", vi: "hoa" },
+                { en: "reading stories", pronun: "/riːdɪŋ stɔːriz/", vi: "đọc những câu chuyện" },
+                { en: "help people", pronun: "/help ˈpiːpl/", vi: "giúp đỡ mọi người" },
+                { en: "teach children", pronun: "/tiːtʃ ˈtʃɪldrən/", vi: "dạy những đứa trẻ" },
+                { en: "report the news", pronun: "/rɪˈpɔːt ðə njuːz/", vi: "đưa tin tức" },
+                { en: "grow flowers", pronun: "/ɡrəʊ ˈflaʊərz/", vi: "trồng hoa" },
+                { en: "write stories", pronun: "/raɪt stɔːriz/", vi: "viết những câu chuyện" },
+                { en: "interesting", pronun: "/ˈɪntrəstɪŋ/", vi: "thú vị" },
+                { en: "do a survey", pronun: "/duː ə ˈsɜːveɪ/", vi: "làm cuộc khảo sát" },
+                { en: "take care of", pronun: "/teɪk keə(r) əv/", vi: "chăm sóc" }
+            ]
+        };
+
+        // --- DỮ LIỆU BÀI TẬP 10 CÂU CHO MỖI UNIT ---
+        const quizData = {
+            u1: [
+                { q: "1. Can you tell me about ________?", opts: ["yourself", "you", "your", "yours"], ans: 0 },
+                { q: "2. My favourite sport is ________.", opts: ["panda", "swimming", "sandwich", "city"], ans: 1 },
+                { q: "3. What's ________ favourite colour? - It's blue.", opts: ["you", "your", "yours", "she"], ans: 1 },
+                { q: "4. What's Nam's favourite animal? - It's a ________.", opts: ["basketball", "table tennis", "panda", "city"], ans: 2 },
+                { q: "5. I live in the ________.", opts: ["countryside", "swimming", "beautifully", "yesterday"], ans: 0 },
+                { q: "6. She can play basketball ________.", opts: ["beautiful", "beautifully", "beauty", "beautify"], ans: 1 },
+                { q: "7. What's her favourite food? - It's a ________.", opts: ["dolphin", "sandwich", "baseball", "subject"], ans: 1 },
+                { q: "8. My birthday is ________ April.", opts: ["on", "at", "in", "to"], ans: 2 },
+                { q: "9. What's his favourite sport? - It's ________.", opts: ["table tennis", "panda", "sandwich", "colour"], ans: 0 },
+                { q: "10. I am in ________ 5A.", opts: ["grade", "Class", "city", "house"], ans: 1 }
+            ],
+            u2: [
+                { q: "1. What's your ________? - It's 50 Hoa Binh Street.", opts: ["email", "address", "building", "district"], ans: 1 },
+                { q: "2. Do you live in this house? - Yes, I ________.", opts: ["do", "don't", "am", "live"], ans: 0 },
+                { q: "3. Where ________ Nick live? - He lives at 50 King Street.", opts: ["do", "does", "is", "are"], ans: 1 },
+                { q: "4. I live ________ 20 Le Loi Street.", opts: ["in", "on", "at", "from"], ans: 2 },
+                { q: "5. Do you live in that building? - No, I ________.", opts: ["do", "don't", "am not", "doesn't"], ans: 1 },
+                { q: "6. Her flat is on the third floor of the ________.", opts: ["tower", "email", "far", "near"], ans: 0 },
+                { q: "7. Where does she live? - She ________ at 100 Balloon Street.", opts: ["live", "lives", "living", "lived"], ans: 1 },
+                { q: "8. My school is not far ________ my house.", opts: ["to", "from", "at", "in"], ans: 1 },
+                { q: "9. What's his address? - ________ 14 Quang Trung Street.", opts: ["It", "Its", "It's", "He's"], ans: 2 },
+                { q: "10. Look! The big park is over ________.", opts: ["there", "here", "near", "far"], ans: 0 }
+            ],
+            u3: [
+                { q: "1. Where are you from? - I'm from ________.", opts: ["Vietnamese", "Vietnam", "American", "Japanese"], ans: 1 },
+                { q: "2. What nationality is Mary? - She is ________.", opts: ["Britain", "British", "Japan", "America"], ans: 1 },
+                { q: "3. What's he like? - He's ________.", opts: ["friendly", "friend", "friends", "friendship"], ans: 0 },
+                { q: "4. Is Linh active? - No, she ________.", opts: ["is", "isn't", "doesn't", "don't"], ans: 1 },
+                { q: "5. Amy is from ________.", opts: ["Japanese", "Japan", "Australian", "Chinese"], ans: 1 },
+                { q: "6. What nationality are you? - I'm ________.", opts: ["Australian", "Australia", "Malaysia", "India"], ans: 0 },
+                { q: "7. Mai is very ________. She always helps her friends.", opts: ["active", "helpful", "clever", "fun"], ans: 1 },
+                { q: "8. She likes making new ________.", opts: ["friends", "friendly", "friendship", "friend"], ans: 0 },
+                { q: "9. Is he clever? - Yes, he ________.", opts: ["does", "is", "can", "has"], ans: 1 },
+                { q: "10. Where is Amy ________? - She's from Japan.", opts: ["from", "to", "in", "at"], ans: 0 }
+            ],
+            u4: [
+                { q: "1. What do you like in your free time? - I like ________ the Internet.", opts: ["surf", "surfs", "surfing", "surfed"], ans: 2 },
+                { q: "2. What does she like in her free time? - She likes ________ the piano.", opts: ["playing", "play", "plays", "played"], ans: 0 },
+                { q: "3. What do you do at the weekend? - I ________ read stories.", opts: ["always", "is", "am", "are"], ans: 0 },
+                { q: "4. What does he do at the weekend? - He usually ________ football.", opts: ["play", "plays", "playing", "played"], ans: 1 },
+                { q: "5. I like going ________ a walk in the evening.", opts: ["to", "for", "at", "in"], ans: 1 },
+                { q: "6. She often ________ TV in her free time.", opts: ["watch", "watches", "watching", "watched"], ans: 1 },
+                { q: "7. What ________ he do at the weekend?", opts: ["do", "does", "is", "are"], ans: 1 },
+                { q: "8. My brother likes playing the ________.", opts: ["guitar", "football", "walk", "stories"], ans: 0 },
+                { q: "9. My mother likes watering the ________.", opts: ["flowers", "internet", "music", "walk"], ans: 0 },
+                { q: "10. They ________ play chess because they don't like it.", opts: ["always", "never", "usually", "often"], ans: 1 }
+            ],
+            u5: [
+                { q: "1. What would you like to be in the future? - I'd like to be a ________.", opts: ["reporter", "report", "reporting", "reported"], ans: 0 },
+                { q: "2. Why would you like to be a doctor? - Because I'd like to ________ people.", opts: ["help", "helps", "helping", "helped"], ans: 0 },
+                { q: "3. What would she like to be in the future? - She'd like to be a ________.", opts: ["teacher", "teach", "teaching", "teaches"], ans: 0 },
+                { q: "4. Why would he like to be a gardener? - Because he'd like to ________ flowers.", opts: ["grow", "grows", "growing", "grew"], ans: 0 },
+                { q: "5. A ________ helps to put out fires.", opts: ["writer", "gardener", "firefighter", "reporter"], ans: 2 },
+                { q: "6. A reporter likes to report the ________.", opts: ["news", "stories", "flowers", "children"], ans: 0 },
+                { q: "7. Why would she like to be a teacher? - Because she'd like to teach ________.", opts: ["children", "news", "flowers", "stories"], ans: 0 },
+                { q: "8. What ________ he like to be in the future?", opts: ["would", "will", "is", "does"], ans: 0 },
+                { q: "9. A writer likes to write ________.", opts: ["stories", "news", "flowers", "children"], ans: 0 },
+                { q: "10. She wants to take care ________ sick people.", opts: ["of", "for", "in", "at"], ans: 0 }
+            ]
+        };
+
+        let currentStudentName = "Học sinh";
+        let fcAllList = [];
+        let currentFcIndex = 0;
+
+        // Khởi tạo giao diện
+        window.onload = function() {
+            renderAllVocab();
+            renderAllQuizzes();
+            initFlashcards();
+        };
+
+        function saveStudentName() {
+            const input = document.getElementById('studentNameInput').value.trim();
+            if(input) {
+                currentStudentName = input;
+                document.getElementById('displayName').innerText = currentStudentName;
+                document.getElementById('certName').innerText = currentStudentName;
+                document.getElementById('nameModal').style.display = 'none';
+            }
+        }
+
+        // Phát âm từ / câu bằng Web Speech API
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const msg = new SpeechSynthesisUtterance(text);
+                msg.lang = 'en-US';
+                msg.rate = 0.85;
+                window.speechSynthesis.speak(msg);
+            } else {
+                alert("Trình duyệt của bạn không hỗ trợ phát âm!");
+            }
+        }
+
+        // Hiển thị danh sách từ vựng
+        function renderAllVocab() {
+            for(let u = 1; u <= 5; u++) {
+                const tbody = document.getElementById(`vocab-u${u}`);
+                tbody.innerHTML = vocabData[`u${u}`].map(v => `
+                    <tr>
+                        <td>${v.en}</td>
+                        <td style="color:#666;">${v.pronun}</td>
+                        <td>${v.vi}</td>
+                        <td>
+                            <button class="audio-btn" onclick="speak('${v.en}')">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        // Hiển thị Bài tập
+        function renderAllQuizzes() {
+            for(let u = 1; u <= 5; u++) {
+                const quizContainer = document.getElementById(`quiz-u${u}`);
+                quizContainer.innerHTML = quizData[`u${u}`].map((q, qIndex) => `
+                    <div class="quiz-question">
+                        <div class="question-text">${q.q}</div>
+                        <div class="options-grid">
+                            ${q.opts.map((opt, oIndex) => `
+                                <button class="option-btn" id="btn-u${u}-q${qIndex}-o${oIndex}" onclick="selectOption('u${u}', ${qIndex},${oIndex})">
+                                    ${String.fromCharCode(65 + oIndex)}.${opt}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Lưu lựa chọn học sinh
+        const userAnswers = { u1: {}, u2: {}, u3: {}, u4: {}, u5: {} };
+
+        function selectOption(unit, qIndex, oIndex) {
+            userAnswers[unit][qIndex] = oIndex;
+            quizData[unit][qIndex].opts.forEach((_, idx) => {
+                const btn = document.getElementById(`btn-${unit}-q${qIndex}-o${idx}`);
+                btn.classList.remove('selected');
+            });
+            document.getElementById(`btn-${unit}-q${qIndex}-o${oIndex}`).classList.add('selected');
+        }
+
+        // Kiểm tra bài tập
+        function checkQuiz(unit) {
+            const answers = userAnswers[unit];
+            const questions = quizData[unit];
+            let score = 0;
+
+            if(Object.keys(answers).length < questions.length) {
+                alert("Em hãy hoàn thành tất cả 10 câu hỏi trước khi nộp bài nhé!");
+                return;
+            }
+
+            questions.forEach((q, idx) => {
+                const selected = answers[idx];
+                q.opts.forEach((_, oIdx) => {
+                    const btn = document.getElementById(`btn-${unit}-q${idx}-o${oIdx}`);
+                    btn.disabled = true;
+                    if(oIdx === q.ans) {
+                        btn.style.borderColor = "var(--success)";
+                        btn.style.background = "#E6FFFA";
+                    } else if(oIdx === selected) {
+                        btn.style.borderColor = "var(--warning)";
+                        btn.style.background = "#FFE4E6";
+                    }
+                });
+                if(selected === q.ans) score++;
+            });
+
+            const percent = (score / questions.length) * 100;
+            const resDiv = document.getElementById(`result-${unit}`);
+            resDiv.style.display = 'block';
+
+            if(percent >= 50) {
+                resDiv.style.background = "#E6FFFA";
+                resDiv.style.color = "#047857";
+                resDiv.innerHTML = `🎉 Giỏi lắm! Em đạt ${score}/10 câu (${percent}%). Em có thể chuyển sang bài tiếp theo!`;
+                document.getElementById(`next-${unit}`).style.display = 'block';
+            } else {
+                resDiv.style.background = "#FFE4E6";
+                resDiv.style.color = "#B91C1C";
+                resDiv.innerHTML = `😔 Em đạt ${score}/10 câu (${percent}%). Em cần đạt từ 50% trở lên để mở bài tiếp theo. Hãy thử lại nhé!`;
+            }
+        }
+
+        // Mở khóa bài tiếp theo
+        function unlockNextUnit(nextUnit) {
+            const btn = document.getElementById(`btn-${nextUnit}`);
+            btn.disabled = false;
+            btn.innerHTML = btn.innerHTML.replace('fa-lock', 'fa-star');
+            switchTab(nextUnit);
+            
+            // Cập nhật phần trăm trang chúc mừng
+            if(nextUnit === 'cert') {
+                document.getElementById('certPercent').innerText = "100%";
+                document.getElementById('certBar').style.width = "100%";
+            }
+        }
+
+        // Chuyển Tab
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            document.getElementById(`btn-${tabId}`).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Flashcard Logic
+        function initFlashcards() {
+            fcAllList = [];
+            for(let u = 1; u <= 5; u++) {
+                vocabData[`u${u}`].forEach(item => {
+                    fcAllList.push({ ...item, unitName: `Unit ${u}` });
+                });
+            }
+            showFlashcard(0);
+        }
+
+        function showFlashcard(index) {
+            currentFcIndex = index;
+            const item = fcAllList[currentFcIndex];
+            document.getElementById('main-flashcard').classList.remove('flipped');
+            setTimeout(() => {
+                document.getElementById('fc-english').innerText = item.en;
+                document.getElementById('fc-pronun').innerText = item.pronun;
+                document.getElementById('fc-vietnamese').innerText = item.vi;
+                document.getElementById('fc-unit').innerText = item.unitName;
+            }, 200);
+        }
+
+        function flipCard() {
+            document.getElementById('main-flashcard').classList.toggle('flipped');
+        }
+
+        function nextFc() {
+            let nextIdx = (currentFcIndex + 1) % fcAllList.length;
+            showFlashcard(nextIdx);
+        }
+
+        function prevFc() {
+            let prevIdx = (currentFcIndex - 1 + fcAllList.length) % fcAllList.length;
+            showFlashcard(prevIdx);
+        }
+
+        function randomFc() {
+            let randIdx = Math.floor(Math.random() * fcAllList.length);
+            showFlashcard(randIdx);
+        }
+
+        function speakCurrentFc() {
+            speak(fcAllList[currentFcIndex].en);
+        }
+    </script>
+</body>
+</html>
